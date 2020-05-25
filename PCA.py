@@ -12,8 +12,8 @@ from sklearn import decomposition as decomp
 from numpy import linalg as LA;
 import matplotlib.colors as col;  # importing coloring tools from MatPlotLib
 
-
-dataset = pd.read_csv(r"G:\uni\gepiTanulas\hf\data\google_review\google_review_ratings.csv")
+ratings_url = 'https://raw.githubusercontent.com/vbartalis/MachineLearning2019-2020-2/master/data/google_review/google_review_ratings.csv'
+dataset = pd.read_csv(ratings_url)
 data = dataset.iloc[:,2:].values
 target = dataset.iloc[:,1].values.round()
 n = data.shape[0]
@@ -66,14 +66,14 @@ comp = [0.70, 0.80, 0.90, 0.95]
 for j in comp:
     pca = decomp.PCA(n_components=j);
     pca.fit(data);
-    iris_pc = pca.transform(data);
-    class_mean = np.zeros((k,p));
-    for i in range(k):
-        class_ind = [target==i][0].astype(int);
-        class_mean[i,:] = np.average(data, axis=0, weights=class_ind);
-        PC_class_mean = pca.transform(class_mean);    
-        full_mean = np.reshape(pca.mean_,(1,p));
-        PC_mean = pca.transform(full_mean);
+    # iris_pc = pca.transform(data);
+    # class_mean = np.zeros((k,p));
+    # for i in range(k):
+    #     class_ind = [target==i][0].astype(int);
+    #     class_mean[i,:] = np.average(data, axis=0, weights=class_ind);
+    #     PC_class_mean = pca.transform(class_mean);    
+    #     full_mean = np.reshape(pca.mean_,(1,p));
+    #     PC_mean = pca.transform(full_mean);
     print("-----")
     print(j)
     #print(pca.explained_variance_ratio_)

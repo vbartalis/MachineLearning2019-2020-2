@@ -13,8 +13,8 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn import metrics;
 
-
-dataset = pd.read_csv(r"G:\uni\gepiTanulas\hf\data\google_review\google_review_ratings.csv")
+url = 'https://raw.githubusercontent.com/vbartalis/MachineLearning2019-2020-2/master/data/google_review/google_review_ratings.csv'
+dataset = pd.read_csv(url)
 X = dataset.iloc[:, [1,10]].values
 
 #%%
